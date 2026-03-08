@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Network — LinkedIn Redesign V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" placeholder="Search jobs, companies, people" aria-label="Search" />
+      </div>
+      <nav class="topbar-nav" aria-label="Primary">
+        <a class="nav-item active" href="index.html">Home</a>
+        <a class="nav-item" href="v2-community.html">V2 Feed</a>
+        <a class="nav-item" href="demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="landing-wrap">
+    <section class="card landing-hero">
+      <h1>My Network</h1>
+      <p>Connect with professionals, expand your network, and discover new opportunities.</p>
+      <div class="landing-actions">
+        <a class="landing-btn primary" href="index.html">Back to V1 Home</a>
+        <a class="landing-btn" href="manage-board.html">Open Manage Board</a>
+      </div>
+    </section>
+
+    <section class="landing-grid">
+      <article class="card">
+        <h2>Connections</h2>
+        <input type="text" id="networkSearch" class="refined-input" placeholder="Search connections...">
+        <ul class="landing-list" id="connectionsUl"></ul>
+      </article>
+
+      <article class="card">
+        <h2>Pending Requests</h2>
+        <ul class="landing-list" id="pendingUl"></ul>
+      </article>
+    </section>
+    <script>
+      // ...existing code...
+    </script>
+  </main>
+    <!-- Removed layout sidebar and profile card. Only landing-wrap main content remains. -->
+</body>
+</html>

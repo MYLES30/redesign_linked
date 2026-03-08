@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="v2-job-hub.css" />
   </head>
   <body class="v2-hub">
+        <!-- Quick Apply Modal -->
+        <div id="quickApplyModal" class="modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0003;align-items:center;justify-content:center;z-index:10000;">
+          <div style="background:#fff;border-radius:12px;box-shadow:0 4px 24px #0002;padding:32px;min-width:320px;max-width:400px;position:relative;">
+            <button class="composer-close" style="position:absolute;top:12px;right:12px;font-size:20px;background:none;border:none;cursor:pointer;">&times;</button>
+            <h2 id="applyJobTitle" style="margin-bottom:18px;font-size:22px;color:#2d3a4a;">Quick Apply</h2>
+            <form id="quickApplyForm">
+              <input type="text" placeholder="Your Name" required style="width:100%;margin-bottom:12px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;">
+              <input type="email" placeholder="Your Email" required style="width:100%;margin-bottom:12px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;">
+              <input type="file" style="margin-bottom:12px;">
+              <button type="submit" class="action-btn" style="margin-right:8px;">Submit</button>
+            </form>
+            <div id="applyConfirmation" hidden style="margin-top:18px;color:#228b22;font-weight:500;">Application submitted!</div>
+          </div>
+        </div>
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">in</div>
@@ -20,14 +34,13 @@
           <span>⌕</span>
           <input type="text" placeholder="Search jobs, companies, interview topics" aria-label="Search" />
         </div>
-
         <nav class="nav" aria-label="Primary">
            <a href="index.html">V1 Feed</a>
            <a class="active" href="#">Home</a>
-           <a href="#">My Network</a>
-           <a href="#">Jobs</a>
-           <a href="#">Messaging</a>
-           <a href="#">Notifications</a>
+           <a href="my-network.html">My Network</a>
+           <a href="jobs.html">Jobs</a>
+           <a href="messaging.html">Messaging</a>
+           <a href="notifications.html">Notifications</a>
            <a href="v2-community.html">V2 Feed</a>
            <a href="demo.html">Demo</a>
            <a href="profile.html">Me</a>
@@ -39,7 +52,7 @@
       <aside class="left-rail">
         <section class="card profile-card">
           <a class="profile-entry" href="profile.html">
-            <img class="avatar" src="assets/profile-photo.jpg" alt="Mylene Zorilla" />
+            <img class="avatar" src="assets/profile-photo.jpg" alt="Profile" />
             <h2>Mylene Zorilla</h2>
             <p>Senior Product Designer · Active Job Search</p>
             <div class="metric-grid">
@@ -48,266 +61,229 @@
             </div>
           </a>
         </section>
+        <nav class="nav" aria-label="Primary">
+           <a href="index.html">V1 Feed</a>
+           <a class="active" href="#">Home</a>
+           <a href="my-network.html">My Network</a>
+           <a href="jobs.html">Jobs</a>
+           <a href="messaging.html">Messaging</a>
+           <a href="notifications.html">Notifications</a>
+           <a href="v2-community.html">V2 Feed</a>
+           <a href="demo.html">Demo</a>
+           <a href="profile.html">Me</a>
+        </nav>
 
-        <section class="card research-snapshot">
-          <h3><a class="content-link" href="#">Career Insights</a></h3>
-          <ul class="simple-list">
-            <li><a class="content-link" href="#"><b>New this week:</b> 11 matching roles in Product + UX Engineering</a></li>
-            <li><a class="content-link" href="#"><b>Best response window:</b> 10:00–14:00 on weekdays</a></li>
-            <li><a class="content-link" href="#"><b>Top skill trend:</b> system design storytelling and accessibility</a></li>
-          </ul>
-        </section>
+            <section class="card research-snapshot">
+              <h3><a class="content-link" href="#">Career Insights</a></h3>
+              <ul class="simple-list">
+                <li><a class="content-link" href="#"><b>New this week:</b> 11 matching roles in Product + UX Engineering</a></li>
+                <li><a class="content-link" href="#"><b>Best response window:</b> 10:00–14:00 on weekdays</a></li>
+                <li><a class="content-link" href="#"><b>Top skill trend:</b> system design storytelling and accessibility</a></li>
+              </ul>
+            </section>
+            <section class="card">
+              <h3><a class="content-link" href="#">Job Search Tools</a></h3>
+              <ul class="simple-list">
+                <li><a class="content-link" href="#">Saved searches and alerts</a></li>
+                <li><a class="content-link" href="#">Resume versions by role type</a></li>
+                <li><a class="content-link" href="#">Interview prep checklist</a></li>
+              </ul>
+            </section>
 
-        <section class="card">
-          <h3><a class="content-link" href="#">Job Search Tools</a></h3>
-          <ul class="simple-list">
-            <li><a class="content-link" href="#">Saved searches and alerts</a></li>
-            <li><a class="content-link" href="#">Resume versions by role type</a></li>
-            <li><a class="content-link" href="#">Interview prep checklist</a></li>
-          </ul>
-        </section>
+            <section class="card insights">
+              <small>Preparation Coach</small>
+              <h3><a class="content-link" href="#">Stand out in technical interviews</a></h3>
+              <p>Get role-specific prep prompts, portfolio talking points, and question simulations based on your upcoming interviews.</p>
+              <button class="landing-btn" onclick="window.location.href='prep-plan.html'">Open prep plan</button>
+            </section>
+          </aside>
 
-        <section class="card insights">
-          <small>Preparation Coach</small>
-          <h3><a class="content-link" href="#">Stand out in technical interviews</a></h3>
-          <p>Get role-specific prep prompts, portfolio talking points, and question simulations based on your upcoming interviews.</p>
-          <button class="landing-btn" onclick="window.location.href='prep-plan.html'">Open prep plan</button>
-        </section>
-      </aside>
-
-      <section class="center">
-        <section class="card hero">
-          <div>
-            <h1>Job Search Hub</h1>
-            <p>Track applications, manage recruiter conversations, and prepare for interviews in one workspace.</p>
-          </div>
-        </section>
-
-        <section class="tabs" aria-label="Main sections">
-          <a class="tab-link" href="v2-community.html">Community</a>
-          <a class="tab-link active" href="v2-job-hub.html">Applications</a>
-        </section>
-
-        <section class="card board-wrap">
-          <div class="board-head">
-            <h2><a class="content-link" href="#">Application Tracker</a></h2>
-            <small>Updated 15 minutes ago</small>
-          </div>
-
-          <div class="kanban">
-            <article class="lane lane-applied">
-              <h3>1 • Applied</h3>
-              <p class="lane-sub">Goal: qualify follow-up priority</p>
-              <div class="job-card">
-                <strong><a class="content-link" href="#">Frontend Engineer · PixelWave</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Applied: Mar 4 · Match 86%</p>
-                  <label>Next step</label>
-                  <p class="note">Send recruiter follow-up with updated case study link.</p>
-                  <div class="job-footer"><span>Due today</span><button>Do now</button></div>
-                </div>
-              </div>
-              <div class="job-card">
-                <strong><a class="content-link" href="#">UI Engineer · CodeBridge</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Applied: Mar 3 · Match 79%</p>
-                  <label>Next step</label>
-                  <p class="note">Refine portfolio intro for engineering collaboration examples.</p>
-                  <div class="job-footer"><span>Due tomorrow</span><button>Plan</button></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="lane lane-screening">
-              <h3>2 • Screening</h3>
-              <p class="lane-sub">Goal: prepare role-specific evidence</p>
-              <div class="job-card">
-                <strong><a class="content-link" href="#">Product Designer · NovaStack</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Recruiter call: Mar 7, 10:00</p>
-                  <label>Next step</label>
-                  <p class="note">Prepare measurable outcomes from recent product projects.</p>
-                  <div class="job-footer"><span>Prep in 4h</span><button>Open prep</button></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="lane lane-technical">
-              <h3>3 • Technical Interview</h3>
-              <p class="lane-sub">Goal: reduce uncertainty before panel</p>
-              <div class="job-card interview">
-                <strong><a class="content-link" href="#">Design Systems Lead · TechCloud</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Panel interview: Mar 8, 14:00</p>
-                  <label>Next step</label>
-                  <p class="note">Review architecture trade-offs and accessibility governance metrics.</p>
-                  <div class="job-footer"><span>Tomorrow</span><button>Checklist</button></div>
-                </div>
-              </div>
-              <div class="job-card interview">
-                <strong><a class="content-link" href="#">Senior UX Engineer · ByteForge</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Live case: Mar 9, 09:30</p>
-                  <label>Next step</label>
-                  <p class="note">Practice framing: simplify user flow and justify interaction trade-offs.</p>
-                  <div class="job-footer"><span>In 2 days</span><button>Practice</button></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="lane lane-offer">
-              <h3>4 • Final / Offer</h3>
-              <p class="lane-sub">Goal: confirm decision criteria</p>
-              <div class="job-card">
-                <strong><a class="content-link" href="#">Principal Designer · Axion</a></strong>
-                <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
-                <div class="job-details">
-                  <p>Final round complete · Offer pending</p>
-                  <label>Next step</label>
-                  <p class="note">Prepare negotiation notes with compensation benchmark summary.</p>
-                  <div class="job-footer"><span>Awaiting reply</span><button>Review</button></div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="card focus-strip">
-          <div class="section-head">
-            <h2>Today’s High-Impact Actions</h2>
-            <a href="#">Prioritize all</a>
-          </div>
-          <div class="priority-grid">
-            <article class="priority-card">
-              <h3><a class="content-link" href="#">Reply to 3 recruiter messages</a></h3>
-              <p>All three roles are in screening stage and time-sensitive.</p>
-              <span class="tag urgent">Urgent</span>
-            </article>
-            <article class="priority-card">
-              <h3><a class="content-link" href="#">Tailor resume for UX Engineer</a></h3>
-              <p>Keyword gap detected in system design and accessibility terms.</p>
-              <span class="tag focus">Important</span>
-            </article>
-            <article class="priority-card">
-              <h3><a class="content-link" href="#">Prepare interview evidence</a></h3>
-              <p>Collect quantifiable outcomes from two portfolio case studies.</p>
-              <span class="tag prep">Prep</span>
-            </article>
-          </div>
-        </section>
-
-      </section>
-
-      <aside class="right-rail">
-        <section class="card calendar">
-          <h3 class="calendar-title">
-            <button type="button" class="calendar-toggle" id="calendarToggle" aria-expanded="false" aria-controls="calendarWidget">
-              <span class="calendar-icon" aria-hidden="true">📅</span>
-              Interview Calendar
-            </button>
-          </h3>
-          <div class="calendar-widget" id="calendarWidget" hidden>
-            <div class="calendar-toolbar">
-              <button type="button" id="calPrev" aria-label="Previous month">‹</button>
-              <strong id="calMonthLabel">Month</strong>
-              <button type="button" id="calNext" aria-label="Next month">›</button>
-            </div>
-            <div class="calendar-weekdays" aria-hidden="true">
-              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-            </div>
-            <div class="calendar-days" id="calDays" role="grid" aria-label="Interview calendar"></div>
-          </div>
-          <p class="calendar-agenda-title">Scheduled interviews</p>
-          <ul class="simple-list calendar-agenda" id="calAgenda"></ul>
-        </section>
-
-        <section class="card decision-log">
-          <h3><a class="content-link" href="#">Recruiter Activity</a></h3>
-          <ul class="simple-list">
-            <li><a class="content-link" href="#"><b>3</b> new messages from hiring teams</a></li>
-            <li><a class="content-link" href="#"><b>2</b> interview follow-ups need reply today</a></li>
-            <li><a class="content-link" href="#"><b>1</b> salary discussion scheduled this week</a></li>
-          </ul>
-        </section>
-
-        <section class="card recommendations">
-          <div class="section-head">
-            <h2>Recommended Roles</h2>
-            <a href="recommended-roles.html">See all</a>
-          </div>
-
-          <div class="role-list">
-            <article class="role-item">
+          <section class="center">
+            <section class="card hero">
               <div>
-                <h4><a class="content-link" href="#">Senior Product Designer</a></h4>
-                <p><a class="content-link" href="#">LaunchGrid · Toronto, ON · Hybrid</a></p>
-                <small>Match reason: strong fit with design systems and strategy depth.</small>
+                <h1>Job Search Hub</h1>
+                <p>Track applications, manage recruiter conversations, and prepare for interviews in one workspace.</p>
               </div>
-                <button class="quick-apply-btn" data-role="Senior Product Designer" data-company="LaunchGrid" data-location="Toronto, ON · Hybrid">Quick Apply</button>
-            </article>
+            </section>
 
-            <article class="role-item">
-              <div>
-                <h4><a class="content-link" href="#">UX Engineer (React)</a></h4>
-                <p><a class="content-link" href="#">Vertex Labs · Remote · Full-time</a></p>
-                <small>Match reason: aligns with implementation and UX architecture strengths.</small>
+            <section class="tabs" aria-label="Main sections">
+              <a class="tab-link" href="v2-community.html">Community</a>
+              <a class="tab-link active" href="v2-job-hub.html">Applications</a>
+            </section>
+
+            <section class="card board-wrap">
+              <div class="board-head">
+                <h2><a class="content-link" href="#">Application Tracker</a></h2>
+                <small>Updated 15 minutes ago</small>
               </div>
-                <button class="quick-apply-btn" data-role="UX Engineer (React)" data-company="Vertex Labs" data-location="Remote · Full-time">Quick Apply</button>
-            </article>
 
-            <article class="role-item">
-              <div>
-                <h4><a class="content-link" href="#">Design Systems Architect</a></h4>
-                <p><a class="content-link" href="#">CoreSignal · Vancouver, BC · On-site</a></p>
-                <small>Match reason: high fit for scalability and governance experience.</small>
+              <div class="kanban">
+                <article class="lane lane-applied">
+                  <h3>1 • Applied</h3>
+                  <p class="lane-sub">Goal: qualify follow-up priority</p>
+                  <div class="job-card">
+                    <strong><a class="content-link" href="#">Frontend Engineer · PixelWave</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Applied: Mar 4 · Match 86%</p>
+                      <label>Next step</label>
+                      <p class="note">Send recruiter follow-up with updated case study link.</p>
+                      <div class="job-footer"><span>Due today</span><button onclick="window.location.href='do-now.html'">Do now</button></div>
+                    </div>
+                  </div>
+                  <div class="job-card">
+                    <strong><a class="content-link" href="#">UI Engineer · CodeBridge</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Applied: Mar 3 · Match 79%</p>
+                      <label>Next step</label>
+                      <p class="note">Refine portfolio intro for engineering collaboration examples.</p>
+                      <div class="job-footer"><span>Due tomorrow</span><button onclick="window.location.href='plan.html'">Plan</button></div>
+                    </div>
+                  </div>
+                </article>
+                <article class="lane lane-screening">
+                  <h3>2 • Screening</h3>
+                  <p class="lane-sub">Goal: prepare role-specific evidence</p>
+                  <div class="job-card">
+                    <strong><a class="content-link" href="#">Product Designer · NovaStack</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Recruiter call: Mar 7, 10:00</p>
+                      <label>Next step</label>
+                      <p class="note">Prepare measurable outcomes from recent product projects.</p>
+                      <div class="job-footer"><span>Prep in 4h</span><button onclick="window.location.href='open-prep.html'">Open prep</button></div>
+                    </div>
+                  </div>
+                </article>
+                <article class="lane lane-technical">
+                  <h3>3 • Technical Interview</h3>
+                  <p class="lane-sub">Goal: reduce uncertainty before panel</p>
+                  <div class="job-card interview">
+                    <strong><a class="content-link" href="#">Design Systems Lead · TechCloud</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Panel interview: Mar 8, 14:00</p>
+                      <label>Next step</label>
+                      <p class="note">Review architecture trade-offs and accessibility governance metrics.</p>
+                      <div class="job-footer"><span>Tomorrow</span><button onclick="window.location.href='checklist.html'">Checklist</button></div>
+                    </div>
+                  </div>
+                  <div class="job-card interview">
+                    <strong><a class="content-link" href="#">Senior UX Engineer · ByteForge</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Live case: Mar 9, 09:30</p>
+                      <label>Next step</label>
+                      <p class="note">Practice framing: simplify user flow and justify interaction trade-offs.</p>
+                      <div class="job-footer"><span>In 2 days</span><button onclick="window.location.href='practice.html'">Practice</button></div>
+                    </div>
+                  </div>
+                </article>
+                <article class="lane lane-offer">
+                  <h3>4 • Final / Offer</h3>
+                  <p class="lane-sub">Goal: confirm decision criteria</p>
+                  <div class="job-card">
+                    <strong><a class="content-link" href="#">Principal Designer · Axion</a></strong>
+                    <button type="button" class="details-toggle" aria-expanded="false">Show details</button>
+                    <div class="job-details">
+                      <p>Final round complete · Offer pending</p>
+                      <label>Next step</label>
+                      <p class="note">Prepare negotiation notes with compensation benchmark summary.</p>
+                      <div class="job-footer"><span>Awaiting reply</span><button onclick="window.location.href='review.html'">Review</button></div>
+                    </div>
+                  </div>
+                </article>
               </div>
-                <button class="quick-apply-btn" data-role="Design Systems Architect" data-company="CoreSignal" data-location="Vancouver, BC · On-site">Quick Apply</button>
-            </article>
-          </div>
-        </section>
+            </section>
 
-      </aside>
-    </main>
+            <section class="card focus-strip">
+              <div class="section-head">
+                <h2>Today’s High-Impact Actions</h2>
+                <a href="#">Prioritize all</a>
+              </div>
+              <div class="priority-grid">
+                <article class="priority-card">
+                  <h3><a class="content-link" href="#">Reply to 3 recruiter messages</a></h3>
+                  <p>All three roles are in screening stage and time-sensitive.</p>
+                <!-- Profile card removed for cleaner layout -->
+                <!-- Main menu removed for cleaner layout -->
+                </article>
+              </div>
+            </section>
 
-    <footer class="v2-footer">
-      <div class="v2-footer-links">
-        <a href="#">About</a>
-        <a href="#">Accessibility</a>
-        <a href="#">Help Center</a>
-        <a href="#">Privacy &amp; Terms</a>
-      </div>
-      <p>LinkedIn Prototype © 2026</p>
-    </footer>
-      <!-- Quick Apply Modal -->
-      <div id="quickApplyModal" class="composer-overlay" hidden>
-        <div class="composer-modal" style="max-width:400px">
-          <div class="composer-modal-head">
-            <h2 id="applyJobTitle">Quick Apply</h2>
-            <button class="composer-close" type="button" aria-label="Close">×</button>
-          </div>
-          <form id="quickApplyForm">
-            <div style="margin-bottom:10px">
-              <label for="applyName">Name</label>
-              <input id="applyName" name="name" type="text" required style="width:100%;padding:7px;border-radius:8px;border:1px solid #cbd5e1;margin-top:4px">
-            </div>
-            <div style="margin-bottom:10px">
-              <label for="applyEmail">Email</label>
-              <input id="applyEmail" name="email" type="email" required style="width:100%;padding:7px;border-radius:8px;border:1px solid #cbd5e1;margin-top:4px">
-            </div>
-            <div style="margin-bottom:10px">
-              <label for="applyResume">Resume</label>
-              <input id="applyResume" name="resume" type="file" accept=".pdf,.doc,.docx" required style="width:100%;margin-top:4px">
-            </div>
-            <button type="submit" class="profile-btn" style="width:100%;margin-top:8px">Submit Application</button>
-          </form>
-          <div id="applyConfirmation" hidden style="margin-top:16px;text-align:center;color:#22c55e;font-weight:600;font-size:16px">Application submitted!</div>
-        </div>
-      </div>
+          </section>
+
+          <aside class="right-rail">
+            <section class="card calendar">
+              <h3 class="calendar-title">
+                <button type="button" class="calendar-toggle" id="calendarToggle" aria-expanded="false" aria-controls="calendarWidget">
+                  <span class="calendar-icon" aria-hidden="true">📅</span>
+                  Interview Calendar
+                </button>
+              </h3>
+              <div class="calendar-widget" id="calendarWidget" hidden>
+                <div class="calendar-toolbar">
+                  <button type="button" id="calPrev" aria-label="Previous month">‹</button>
+                  <strong id="calMonthLabel">Month</strong>
+                  <button type="button" id="calNext" aria-label="Next month">›</button>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                  <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                </div>
+                <div class="calendar-days" id="calDays" role="grid" aria-label="Interview calendar"></div>
+              </div>
+              <p class="calendar-agenda-title">Scheduled interviews</p>
+              <ul class="simple-list calendar-agenda" id="calAgenda"></ul>
+            </section>
+
+            <section class="card decision-log">
+              <h3><a class="content-link" href="#">Recruiter Activity</a></h3>
+              <ul class="simple-list">
+                <li><a class="content-link" href="#"><b>3</b> new messages from hiring teams</a></li>
+                <li><a class="content-link" href="#"><b>2</b> interview follow-ups need reply today</a></li>
+                <li><a class="content-link" href="#"><b>1</b> salary discussion scheduled this week</a></li>
+              </ul>
+            </section>
+
+            <section class="card recommendations">
+              <div class="section-head">
+                <h2>Recommended Roles</h2>
+                <a href="recommended-roles.html">See all</a>
+              </div>
+
+              <div class="role-list">
+                <article class="role-item">
+                  <div>
+                    <h4><a class="content-link" href="#">Senior Product Designer</a></h4>
+                    <p><a class="content-link" href="#">LaunchGrid · Toronto, ON · Hybrid</a></p>
+                    <small>Match reason: strong fit with design systems and strategy depth.</small>
+                  </div>
+                    <button class="quick-apply-btn" data-role="Senior Product Designer" data-company="LaunchGrid" data-location="Toronto, ON · Hybrid">Quick Apply</button>
+                </article>
+
+                <article class="role-item">
+                  <div>
+                    <h4><a class="content-link" href="#">UX Engineer (React)</a></h4>
+                    <p><a class="content-link" href="#">Vertex Labs · Remote · Full-time</a></p>
+                    <small>Match reason: aligns with implementation and UX architecture strengths.</small>
+                  </div>
+                    <button class="quick-apply-btn" data-role="UX Engineer (React)" data-company="Vertex Labs" data-location="Remote · Full-time">Quick Apply</button>
+                </article>
+
+                <article class="role-item">
+                  <div>
+                    <h4><a class="content-link" href="#">Design Systems Architect</a></h4>
+                    <p><a class="content-link" href="#">CoreSignal · Vancouver, BC · On-site</a></p>
+                    <small>Match reason: high fit for scalability and governance experience.</small>
+                  </div>
+                    <button class="quick-apply-btn" data-role="Design Systems Architect" data-company="CoreSignal" data-location="Vancouver, BC · On-site">Quick Apply</button>
+                </article>
+              </div>
+            </section>
+
+          </aside>
+        </main>
       <script>
         // Modal logic for Quick Apply
         const modal = document.getElementById('quickApplyModal');
@@ -316,9 +292,11 @@
         const confirmation = document.getElementById('applyConfirmation');
         const jobTitle = document.getElementById('applyJobTitle');
         let lastBtn = null;
+        // Only trigger modal from Quick Apply buttons
         document.querySelectorAll('.quick-apply-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            modal.hidden = false;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modal.style.display = 'flex';
             jobTitle.textContent = `Quick Apply — ${btn.dataset.role}`;
             form.reset();
             confirmation.hidden = true;
@@ -326,20 +304,20 @@
           });
         });
         closeBtn.addEventListener('click', () => {
-          modal.hidden = true;
+          modal.style.display = 'none';
         });
         form.addEventListener('submit', e => {
           e.preventDefault();
           form.hidden = true;
           confirmation.hidden = false;
           setTimeout(() => {
-            modal.hidden = true;
+            modal.style.display = 'none';
             form.hidden = false;
           }, 1500);
         });
         // Close modal on outside click
         modal.addEventListener('click', e => {
-          if (e.target === modal) modal.hidden = true;
+          if (e.target === modal) modal.style.display = 'none';
         });
       </script>
 

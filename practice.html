@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practice — Technical Interview</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .landing-main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #0001; padding: 32px; }
+    .step-list { margin: 24px 0 18px 0; padding-left: 24px; }
+    .step-list li { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+    .action-btn { display: inline-block; margin-top: 24px; background: var(--brand-strong); color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .action-btn:hover { background: var(--brand-dark); }
+    .success-msg { color: var(--brand-strong); font-weight: 500; margin-top: 18px; display: none; }
+    .back-link { display: block; margin-top: 32px; color: var(--brand-strong); text-align: center; font-size: 15px; }
+  </style>
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Practice Interview Framing</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Practice simplifying user flow and justifying interaction trade-offs for your live case interview.</p>
+    <ul class="step-list">
+      <li>Frame user flow simplification</li>
+      <li>Justify interaction trade-offs</li>
+      <li>Prepare case study talking points</li>
+      <li>Review interview feedback</li>
+    </ul>
+    <div contenteditable="true" id="practiceNotes" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;min-height:80px;background:#f9fafb;" placeholder="Practice notes..."></div>
+    <button class="action-btn" onclick="savePractice()">Save Practice</button>
+    <button class="action-btn" style="background:#e53e3e;margin-left:10px;" onclick="clearPractice()">Clear</button>
+    <div class="success-msg" id="successMsg">Practice notes saved!</div>
+    <a class="back-link" href="v2-job-hub.html">← Back to Job Hub</a>
+  </main>
+  <script>
+    // Load saved notes
+    window.onload = function() {
+      const savedNotes = localStorage.getItem('practiceNotes') || '';
+      document.getElementById('practiceNotes').innerHTML = savedNotes;
+    };
+
+    function savePractice() {
+      const notes = document.getElementById('practiceNotes').innerHTML.trim();
+      localStorage.setItem('practiceNotes', notes);
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 1800);
+    }
+
+    function clearPractice() {
+      document.getElementById('practiceNotes').innerHTML = '';
+      localStorage.removeItem('practiceNotes');
+    }
+  </script>
+</body>
+</html>

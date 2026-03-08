@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobs — LinkedIn Redesign V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+    <!-- Removed duplicate landing-main and jobList sections for clean layout -->
+    <main class="landing-wrap">
+      <section class="card landing-hero">
+        <h1>Jobs</h1>
+        <p>Explore job opportunities, apply to roles, and track your applications.</p>
+        <div class="landing-actions">
+          <a class="landing-btn primary" href="index.html">Back to V1 Home</a>
+          <a class="landing-btn" href="manage-board.html">Open Manage Board</a>
+        </div>
+      </section>
+
+      <section class="landing-grid">
+        <article class="card">
+           <h2>Job Listings</h2>
+           <input type="text" id="jobSearch" class="refined-input" placeholder="Search jobs...">
+           <div class="refined-filters">
+             <input type="text" id="filterRole" class="refined-input" placeholder="Role">
+             <input type="text" id="filterCompany" class="refined-input" placeholder="Company">
+             <input type="text" id="filterLocation" class="refined-input" placeholder="Location">
+           </div>
+           <ul class="landing-list" id="jobUl"></ul>
+           <div id="pagination" class="refined-pagination"></div>
+        </article>
+
+        <article class="card">
+           <h2>Saved Jobs</h2>
+           <ul class="landing-list" id="savedJobsList"></ul>
+        </article>
+      </section>
+      <script>
+        // ...existing code...
+        function saveJob(idx) {
+          const j = jobs[idx];
+          savedJobs.push(j);
+          localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+          renderSavedJobs();
+          renderJobs();
+        }
+        function showJobDetails(idx) {
+          const j = jobs[idx];
+          const modal = document.createElement('div');
+          modal.innerHTML = `<div style='background:#fff;border-radius:8px;box-shadow:0 4px 24px #0001;padding:24px;position:fixed;top:20%;left:50%;transform:translate(-50%,0);z-index:1000;'>
+            <h2 style='font-size:20px;color:var(--brand-strong);margin-bottom:12px;'>${j.role}</h2>
+            <p style='color:var(--muted);margin-bottom:12px;'>${j.company} · ${j.location} · ${j.type}</p>
+            <p style='margin-bottom:12px;'>${j.desc}</p>
+            <button class='action-btn' onclick='closeModal(this)'>Close</button>
+          </div>`;
+          document.body.appendChild(modal);
+        }
+      </script>
+    </main>
+</body>
+</html>

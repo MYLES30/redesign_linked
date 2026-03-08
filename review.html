@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review — Offer Negotiation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .landing-main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #0001; padding: 32px; }
+    .step-list { margin: 24px 0 18px 0; padding-left: 24px; }
+    .step-list li { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+    .action-btn { display: inline-block; margin-top: 24px; background: var(--brand-strong); color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .action-btn:hover { background: var(--brand-dark); }
+    .success-msg { color: var(--brand-strong); font-weight: 500; margin-top: 18px; display: none; }
+    .back-link { display: block; margin-top: 32px; color: var(--brand-strong); text-align: center; font-size: 15px; }
+  </style>
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Review Offer Negotiation</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Prepare negotiation notes with compensation benchmark summary for your final offer discussion.</p>
+    <ul class="step-list">
+      <li>Summarize compensation benchmarks</li>
+      <li>Prepare negotiation talking points</li>
+      <li>Review offer details and criteria</li>
+      <li>Document decision rationale</li>
+    </ul>
+    <textarea id="reviewNotes" rows="5" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;" placeholder="Negotiation notes..."></textarea>
+    <label for="dueDate" style="margin-top:12px;display:block;font-size:15px;color:var(--brand-strong);">Set Due Date:</label>
+    <input type="date" id="dueDate" style="margin-bottom:12px;padding:7px;border-radius:8px;border:1px solid #cbd5e1;">
+    <button class="action-btn" onclick="saveReview()">Save Review</button>
+    <button class="action-btn" style="background:#e53e3e;margin-left:10px;" onclick="clearReview()">Clear</button>
+    <div class="success-msg" id="successMsg">Review notes saved!</div>
+    <a class="back-link" href="v2-job-hub.html">← Back to Job Hub</a>
+  </main>
+  <script>
+    // Load saved notes and due date
+    window.onload = function() {
+      const savedNotes = localStorage.getItem('reviewNotes') || '';
+      document.getElementById('reviewNotes').value = savedNotes;
+      const savedDate = localStorage.getItem('reviewDueDate') || '';
+      document.getElementById('dueDate').value = savedDate;
+      // Notification for due date
+      if (savedDate) {
+        const today = new Date();
+        const due = new Date(savedDate);
+        if (due <= today) {
+          alert('Your review due date is today or has passed!');
+        }
+      }
+    };
+
+    function saveReview() {
+      const notes = document.getElementById('reviewNotes').value.trim();
+      const dueDate = document.getElementById('dueDate').value;
+      localStorage.setItem('reviewNotes', notes);
+      localStorage.setItem('reviewDueDate', dueDate);
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 1800);
+    }
+
+    function clearReview() {
+      document.getElementById('reviewNotes').value = '';
+      document.getElementById('dueDate').value = '';
+      localStorage.removeItem('reviewNotes');
+      localStorage.removeItem('reviewDueDate');
+    }
+  </script>
+</body>
+</html>

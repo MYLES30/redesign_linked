@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Now — Application Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .landing-main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #0001; padding: 32px; }
+    .step-list { margin: 24px 0 18px 0; padding-left: 24px; }
+    .step-list li { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+    .action-btn { display: inline-block; margin-top: 24px; background: var(--brand-strong); color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .action-btn:hover { background: var(--brand-dark); }
+    .success-msg { color: var(--brand-strong); font-weight: 500; margin-top: 18px; display: none; }
+    .back-link { display: block; margin-top: 32px; color: var(--brand-strong); text-align: center; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Send Recruiter Follow-up</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Send a recruiter follow-up with your updated case study link. Make your message clear, concise, and highlight your relevant experience.</p>
+    <ul class="step-list">
+      <li>Review your case study</li>
+      <li>Draft your follow-up message</li>
+      <li>Attach updated portfolio link</li>
+      <li>Send via recruiter contact</li>
+    </ul>
+    <textarea id="followupMsg" rows="5" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;" placeholder="Write your follow-up message here..."></textarea>
+    <input type="text" id="portfolioLink" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;" placeholder="Paste your portfolio link">
+    <button class="action-btn" onclick="sendFollowup()">Send Follow-up</button>
+    <button class="action-btn" style="background:#e53e3e;margin-left:10px;" onclick="clearFollowup()">Clear</button>
+    <button class="action-btn" style="background:#3182ce;margin-left:10px;" onclick="exportFollowup()">Export</button>
+    <div class="success-msg" id="successMsg">Message sent successfully!</div>
+    <a class="back-link" href="v2-job-hub.html">← Back to Job Hub</a>
+  </main>
+  <script>
+    // Load saved notes
+    window.onload = function() {
+      document.getElementById('followupMsg').value = localStorage.getItem('followupMessage') || '';
+      document.getElementById('portfolioLink').value = localStorage.getItem('portfolioLink') || '';
+    };
+
+    function sendFollowup() {
+      const msg = document.getElementById('followupMsg').value.trim();
+      const link = document.getElementById('portfolioLink').value.trim();
+      if (!msg || !link) {
+        alert('Please fill in both the message and portfolio link.');
+        return;
+      }
+      // Save to localStorage
+      localStorage.setItem('followupMessage', msg);
+      localStorage.setItem('portfolioLink', link);
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 1800);
+    }
+
+    function clearFollowup() {
+      document.getElementById('followupMsg').value = '';
+      document.getElementById('portfolioLink').value = '';
+      localStorage.removeItem('followupMessage');
+      localStorage.removeItem('portfolioLink');
+    }
+
+    function exportFollowup() {
+      const msg = document.getElementById('followupMsg').value.trim();
+      const link = document.getElementById('portfolioLink').value.trim();
+      const text = `Follow-up Message:\n${msg}\nPortfolio Link: ${link}`;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'followup.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>

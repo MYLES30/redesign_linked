@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist — Technical Interview</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .landing-main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #0001; padding: 32px; }
+    .step-list { margin: 24px 0 18px 0; padding-left: 24px; }
+    .step-list li { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+    .action-btn { display: inline-block; margin-top: 24px; background: var(--brand-strong); color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .action-btn:hover { background: var(--brand-dark); }
+    .success-msg { color: var(--brand-strong); font-weight: 500; margin-top: 18px; display: none; }
+    .back-link { display: block; margin-top: 32px; color: var(--brand-strong); text-align: center; font-size: 15px; }
+  </style>
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Technical Interview Checklist</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Review architecture trade-offs and accessibility governance metrics before your panel interview.</p>
+    <ul class="step-list" id="checklistItems">
+      <li><input type="checkbox" id="item1"> <label for="item1">List architecture trade-offs</label></li>
+      <li><input type="checkbox" id="item2"> <label for="item2">Document accessibility governance metrics</label></li>
+      <li><input type="checkbox" id="item3"> <label for="item3">Prepare panel interview talking points</label></li>
+      <li><input type="checkbox" id="item4"> <label for="item4">Review technical case studies</label></li>
+    </ul>
+    <textarea id="checklistNotes" rows="5" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;" placeholder="Checklist notes..."></textarea>
+    <button class="action-btn" onclick="saveChecklist()">Save Checklist</button>
+    <button class="action-btn" style="background:#e53e3e;margin-left:10px;" onclick="clearChecklist()">Clear</button>
+    <div class="success-msg" id="successMsg">Checklist saved!</div>
+    <a class="back-link" href="v2-job-hub.html">← Back to Job Hub</a>
+  </main>
+  <script>
+    // Load saved notes and checklist
+    window.onload = function() {
+      const savedNotes = localStorage.getItem('interviewChecklist') || '';
+      document.getElementById('checklistNotes').value = savedNotes;
+      // Load checklist completion
+      for (let i = 1; i <= 4; i++) {
+        const checked = localStorage.getItem('checklistItem' + i);
+        document.getElementById('item' + i).checked = checked === 'true';
+        document.getElementById('item' + i).addEventListener('change', function() {
+          localStorage.setItem('checklistItem' + i, this.checked);
+        });
+      }
+    };
+
+    function saveChecklist() {
+      const notes = document.getElementById('checklistNotes').value.trim();
+      localStorage.setItem('interviewChecklist', notes);
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 1800);
+    }
+
+    function clearChecklist() {
+      document.getElementById('checklistNotes').value = '';
+      localStorage.removeItem('interviewChecklist');
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('item' + i).checked = false;
+        localStorage.removeItem('checklistItem' + i);
+      }
+    }
+  </script>
+</body>
+</html>

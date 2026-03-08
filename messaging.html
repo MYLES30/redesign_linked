@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messaging — LinkedIn Redesign V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Messaging</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Communicate with recruiters, colleagues, and your professional network.</p>
+    <section style="display:flex;gap:24px;">
+      <aside style="width:220px;">
+        <h2 style="font-size:18px;color:var(--brand-strong);margin-bottom:10px;">Conversations</h2>
+        <ul id="conversationList" style="list-style:none;padding:0;margin:0;">
+          <li style="margin-bottom:12px;cursor:pointer;" onclick="openChat('Mylene Zorilla')"><b>Mylene Zorilla</b> <span style="color:var(--muted);font-size:13px;">Senior Product Designer</span> <button class="action-btn" style="padding:4px 10px;font-size:12px;margin-left:8px;" onclick="deleteConversation(event,'Mylene Zorilla')">Delete</button></li>
+          <li style="margin-bottom:12px;cursor:pointer;" onclick="openChat('Alex Kim')"><b>Alex Kim</b> <span style="color:var(--muted);font-size:13px;">UX Engineer</span> <button class="action-btn" style="padding:4px 10px;font-size:12px;margin-left:8px;" onclick="deleteConversation(event,'Alex Kim')">Delete</button></li>
+        </ul>
+      </aside>
+      <main class="landing-wrap">
+        <section class="card landing-hero">
+          <h1>Messaging</h1>
+          <p>Communicate with recruiters, colleagues, and your professional network.</p>
+          <div class="landing-actions">
+            <a class="landing-btn primary" href="index.html">Back to V1 Home</a>
+            <a class="landing-btn" href="manage-board.html">Open Manage Board</a>
+          </div>
+        </section>
+
+        <section class="landing-grid">
+           <article class="card">
+             <h2>Conversations</h2>
+             <ul class="landing-list" id="conversationList"></ul>
+             <input type="text" id="chatInput" class="refined-input" placeholder="Type a message...">
+             <div id="chatBox" class="refined-chatbox"></div>
+             <div id="typingIndicator" class="refined-typing">Typing...</div>
+             <button class="action-btn" onclick="sendMessage()">Send</button>
+           </article>
+        </section>
+        <script>
+          // ...existing code...
+        </script>
+      </main>

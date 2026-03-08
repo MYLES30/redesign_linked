@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan — Application Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .landing-main { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px #0001; padding: 32px; }
+    .step-list { margin: 24px 0 18px 0; padding-left: 24px; }
+    .step-list li { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+    .action-btn { display: inline-block; margin-top: 24px; background: var(--brand-strong); color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .action-btn:hover { background: var(--brand-dark); }
+    .success-msg { color: var(--brand-strong); font-weight: 500; margin-top: 18px; display: none; }
+    .back-link { display: block; margin-top: 32px; color: var(--brand-strong); text-align: center; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-main">
+    <h1 style="font-size: 26px; color: var(--brand-strong); margin-bottom: 16px;">Refine Portfolio Introduction</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 18px;">Refine your portfolio intro for engineering collaboration examples. Make sure your portfolio highlights teamwork, technical skills, and project outcomes.</p>
+    <ul class="step-list">
+      <li>Update portfolio introduction</li>
+      <li>Add engineering collaboration examples</li>
+      <li>Highlight technical skills and outcomes</li>
+      <li>Review for clarity and impact</li>
+    </ul>
+    <textarea id="portfolioIntro" rows="5" style="width:100%;border-radius:8px;border:1px solid #cbd5e1;padding:10px;font-size:15px;margin-bottom:12px;" placeholder="Write your refined portfolio intro..."></textarea>
+    <button class="action-btn" onclick="savePlan()">Save Plan</button>
+    <button class="action-btn" style="background:#e53e3e;margin-left:10px;" onclick="clearPlan()">Clear</button>
+    <button class="action-btn" style="background:#3182ce;margin-left:10px;" onclick="exportPlan()">Export</button>
+    <div class="success-msg" id="successMsg">Portfolio intro saved!</div>
+    <a class="back-link" href="v2-job-hub.html">← Back to Job Hub</a>
+  </main>
+  <script>
+    // Load saved notes
+    window.onload = function() {
+      document.getElementById('portfolioIntro').value = localStorage.getItem('portfolioIntro') || '';
+    };
+
+    function savePlan() {
+      const intro = document.getElementById('portfolioIntro').value.trim();
+      localStorage.setItem('portfolioIntro', intro);
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 1800);
+    }
+
+    function clearPlan() {
+      document.getElementById('portfolioIntro').value = '';
+      localStorage.removeItem('portfolioIntro');
+    }
+
+    function exportPlan() {
+      const intro = document.getElementById('portfolioIntro').value.trim();
+      const text = `Portfolio Intro:\n${intro}`;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'portfolio_intro.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications — LinkedIn Redesign V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="v2-hub">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="v2-job-hub.html">Back to V2 Job Hub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-wrap">
+    <section class="card landing-hero">
+      <h1>Notifications</h1>
+      <p>Stay updated on job alerts, messages, and network activity.</p>
+      <div class="landing-actions">
+        <a class="landing-btn primary" href="index.html">Back to V1 Home</a>
+        <a class="landing-btn" href="manage-board.html">Open Manage Board</a>
+      </div>
+    </section>
+
+    <section class="landing-grid">
+      <article class="card">
+         <h2>Notifications</h2>
+         <select id="notifFilter" class="refined-input">
+           <option value="all">All</option>
+           <option value="jobs">Jobs</option>
+           <option value="messages">Messages</option>
+           <option value="network">Network</option>
+         </select>
+         <div class="refined-badge">
+           <span id="unreadBadge">0 Unread</span>
+         </div>
+         <ul class="landing-list" id="notifUl"></ul>
+      </article>
+    </section>
+    <script>
+      // ...existing code...
+    </script>
+  </main>
+</body>
+</html>
