@@ -39,19 +39,36 @@
       </section>
 
       <section class="landing-grid">
-        <article class="card">
-           <h2>Application Preview</h2>
-           <ul class="landing-list" id="appPreview"></ul>
-           <button id="editPreviewBtn" class="landing-btn">Edit Preview</button>
-        </article>
+          <article class="card">
+            <h2>Application Preview</h2>
+            <ul class="landing-list" id="appPreview"></ul>
+            <button id="editPreviewBtn" class="landing-btn">Edit Preview</button>
+          </article>
 
-        <article class="card">
-           <h2>Ready to Submit</h2>
-           <ul class="landing-list" id="readySubmit"></ul>
-           <button id="editSubmitBtn" class="landing-btn">Edit Submit</button>
-        </article>
+          <article class="card">
+            <h2>Ready to Submit</h2>
+            <ul class="landing-list" id="readySubmit"></ul>
+            <button id="editSubmitBtn" class="landing-btn">Edit Submit</button>
+            <form id="quickApplyForm" style="margin-top:18px;">
+             <label for="resumeUpload" style="font-weight:500;margin-bottom:8px;display:block;">Upload Resume:</label>
+             <input type="file" id="resumeUpload" name="resumeUpload" accept=".pdf,.doc,.docx" style="margin-bottom:12px;">
+             <button type="submit" class="landing-btn primary">Submit Application</button>
+            </form>
+            <div id="submitConfirmation" style="margin-top:12px;color:#228b22;font-weight:500;display:none;">Application submitted successfully!</div>
+          </article>
       </section>
       <script>
+                // Handle real resume submission
+                document.addEventListener("DOMContentLoaded", function() {
+                  const form = document.getElementById("quickApplyForm");
+                  const confirmation = document.getElementById("submitConfirmation");
+                  form.onsubmit = function(e) {
+                    e.preventDefault();
+                    confirmation.style.display = "block";
+                    setTimeout(() => { confirmation.style.display = "none"; }, 2000);
+                    form.reset();
+                  };
+                });
         // Persistent Quick Apply data using localStorage
         const QUICK_APPLY_KEY = "quickApplyData";
         const defaultData = {

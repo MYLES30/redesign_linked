@@ -15,7 +15,102 @@
       </nav>
     </div>
   </header>
-  <main class="landing-wrap">
+   <main class="layout">
+   </main>
+    <script>
+      // Persistent storage keys
+      const POSTS_KEY = "prepPlanPosts";
+      const REPLIES_KEY = "prepPlanReplies";
+      const FOLLOWS_KEY = "prepPlanFollows";
+
+      function load(key) {
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) return [];
+          return JSON.parse(raw);
+        } catch {
+          return [];
+        }
+      }
+      function save(key, arr) {
+        localStorage.setItem(key, JSON.stringify(arr));
+      }
+
+      function renderPosts() {
+        const arr = load(POSTS_KEY);
+        const root = document.getElementById("savedPosts");
+        root.innerHTML = arr.length ? arr.map((v, i) => `<li>${v} <button onclick="removePost(${i})" class="landing-btn" style="padding:2px 8px;">Delete</button></li>`).join("") : "<li style='color:#888;'>No posts saved yet.</li>";
+      }
+      function renderReplies() {
+        const arr = load(REPLIES_KEY);
+        const root = document.getElementById("replyList");
+        root.innerHTML = arr.length ? arr.map((v, i) => `<li>${v} <button onclick="removeReply(${i})" class="landing-btn" style="padding:2px 8px;">Delete</button></li>`).join("") : "<li style='color:#888;'>No replies drafted yet.</li>";
+      }
+      function renderFollows() {
+        const arr = load(FOLLOWS_KEY);
+        const root = document.getElementById("followList");
+        root.innerHTML = arr.length ? arr.map((v, i) => `<li>${v.title} — ${v.date} <button onclick="removeFollow(${i})" class="landing-btn" style="padding:2px 8px;">Delete</button></li>`).join("") : "<li style='color:#888;'>No follow-ups scheduled yet.</li>";
+      }
+      window.removePost = function(idx) {
+        const arr = load(POSTS_KEY);
+        arr.splice(idx, 1);
+        save(POSTS_KEY, arr);
+        renderPosts();
+      };
+      window.removeReply = function(idx) {
+        const arr = load(REPLIES_KEY);
+        arr.splice(idx, 1);
+        save(REPLIES_KEY, arr);
+        renderReplies();
+      };
+      window.removeFollow = function(idx) {
+        const arr = load(FOLLOWS_KEY);
+        arr.splice(idx, 1);
+        save(FOLLOWS_KEY, arr);
+        renderFollows();
+      };
+
+      document.addEventListener("DOMContentLoaded", function() {
+        renderPosts();
+        renderReplies();
+        renderFollows();
+        document.getElementById("postForm").onsubmit = function(e) {
+          e.preventDefault();
+          const val = document.getElementById("postInput").value.trim();
+          if (val) {
+            const arr = load(POSTS_KEY);
+            arr.push(val);
+            save(POSTS_KEY, arr);
+            renderPosts();
+            document.getElementById("postInput").value = "";
+          }
+        };
+        document.getElementById("replyForm").onsubmit = function(e) {
+          e.preventDefault();
+          const val = document.getElementById("replyInput").value.trim();
+          if (val) {
+            const arr = load(REPLIES_KEY);
+            arr.push(val);
+            save(REPLIES_KEY, arr);
+            renderReplies();
+            document.getElementById("replyInput").value = "";
+          }
+        };
+        document.getElementById("followForm").onsubmit = function(e) {
+          e.preventDefault();
+          const title = document.getElementById("followTitle").value.trim();
+          const date = document.getElementById("followDate").value;
+          if (title && date) {
+            const arr = load(FOLLOWS_KEY);
+            arr.push({title, date});
+            save(FOLLOWS_KEY, arr);
+            renderFollows();
+            document.getElementById("followTitle").value = "";
+            document.getElementById("followDate").value = "";
+          }
+        };
+      });
+    </script>
     <section class="card" style="max-width: 520px; margin: 32px auto;">
       <h1 style="font-size: 24px; color: var(--brand-strong); margin-bottom: 12px;">Preparation Coach — Prep Plan</h1>
       <p style="color: var(--muted); font-size: 15px; margin-bottom: 18px;">Get ready for your technical interviews with personalized prompts, portfolio talking points, and question simulations.</p>
