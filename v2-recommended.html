@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Redesign V2 — Recommended Roles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="v2-job-hub.css" />
+  </head>
+  <body class="v2-hub">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">in</div>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input type="text" placeholder="Search" aria-label="Search" />
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+           <a href="index.html">V1 Feed</a>
+           <a class="active" href="#">Home</a>
+           <a href="#">My Network</a>
+           <a href="#">Jobs</a>
+           <a href="#">Messaging</a>
+           <a href="#">Notifications</a>
+           <a href="v2-community.html">V2 Feed</a>
+           <a href="demo.html">Demo</a>
+           <a href="profile.html">Me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="left-rail">
+        <section class="card profile-card">
+          <a class="profile-entry" href="profile.html">
+            <img class="avatar" src="assets/profile-photo.jpg" alt="Mylene Zorilla" />
+            <h2>Mylene Zorilla</h2>
+            <p>Senior Product Designer at TechCorp</p>
+            <div class="metric-grid">
+              <div><b>42</b><span>Matched roles</span></div>
+              <div><b>11</b><span>New this week</span></div>
+            </div>
+          </a>
+        </section>
+
+        <section class="card">
+          <h3><a class="content-link" href="#">Refine Search</a></h3>
+          <ul class="simple-list">
+            <li><a class="content-link" href="#">Role: Product / UX Engineering</a></li>
+            <li><a class="content-link" href="#">Experience: Senior+</a></li>
+            <li><a class="content-link" href="#">Location: Canada + Remote</a></li>
+            <li><a class="content-link" href="#">Salary target: Enabled</a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="center">
+        <section class="card hero">
+          <div>
+            <h1>Recommended Roles</h1>
+            <p>High-fit opportunities prioritized by your profile, skills, and intent.</p>
+          </div>
+        </section>
+
+        <section class="tabs" aria-label="Main sections">
+          <a class="tab-link" href="v2-community.html">Community</a>
+          <a class="tab-link" href="v2-job-hub.html">Applications</a>
+        </section>
+
+        <section class="card recommendations">
+          <div class="section-head">
+            <h2>Top Matches</h2>
+            <a href="#">See all</a>
+          </div>
+
+          <div class="role-list">
+            <article class="role-item">
+              <img src="https://i.pravatar.cc/48?img=61" alt="Company logo" />
+              <div>
+                <h4><a class="content-link" href="#">Lead Product Designer</a></h4>
+                <p><a class="content-link" href="#">LaunchGrid · Toronto, ON · Hybrid</a></p>
+              </div>
+                <button class="quick-apply-btn" data-role="Lead Product Designer" data-company="LaunchGrid" data-location="Toronto, ON · Hybrid">Quick Apply</button>
+            </article>
+
+            <article class="role-item">
+              <img src="https://i.pravatar.cc/48?img=49" alt="Company logo" />
+              <div>
+                <h4><a class="content-link" href="#">Senior UX Engineer (React)</a></h4>
+                <p><a class="content-link" href="#">Vertex Labs · Remote · Full-time</a></p>
+              </div>
+                <button class="quick-apply-btn" data-role="Senior UX Engineer (React)" data-company="Vertex Labs" data-location="Remote · Full-time">Quick Apply</button>
+            </article>
+
+            <article class="role-item">
+              <img src="https://i.pravatar.cc/48?img=56" alt="Company logo" />
+              <div>
+                <h4><a class="content-link" href="#">Design Systems Architect</a></h4>
+                <p><a class="content-link" href="#">CoreSignal · Vancouver, BC · On-site</a></p>
+              </div>
+                <button class="quick-apply-btn" data-role="Design Systems Architect" data-company="CoreSignal" data-location="Vancouver, BC · On-site">Quick Apply</button>
+            </article>
+
+            <article class="role-item">
+              <img src="https://i.pravatar.cc/48?img=33" alt="Company logo" />
+              <div>
+                <h4><a class="content-link" href="#">Principal Product Designer</a></h4>
+                <p><a class="content-link" href="#">NorthBridge AI · Remote · Contract</a></p>
+              </div>
+                <button class="quick-apply-btn" data-role="Principal Product Designer" data-company="NorthBridge AI" data-location="Remote · Contract">Quick Apply</button>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <aside class="right-rail">
+        <section class="card calendar">
+          <h3><a class="content-link" href="#">Application Tips</a></h3>
+          <ul class="simple-list">
+            <li><a class="content-link" href="#">Prioritize roles posted in last 3 days</a></li>
+            <li><a class="content-link" href="#">Tailor profile headline per job family</a></li>
+            <li><a class="content-link" href="#">Track responses in Applications tab</a></li>
+          </ul>
+        </section>
+
+        <section class="card insights">
+          <small>Premium Insights</small>
+          <h3><a class="content-link" href="#">Improve match quality</a></h3>
+          <p>Get role-fit scoring and resume keyword guidance before applying.</p>
+          <button>Try Premium for free</button>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="v2-footer">
+      <div class="v2-footer-links">
+        <a href="#">About</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Help Center</a>
+        <a href="#">Privacy &amp; Terms</a>
+      </div>
+      <p>LinkedIn Prototype © 2026</p>
+    </footer>
+      <!-- Quick Apply Modal -->
+      <div id="quickApplyModal" class="composer-overlay" hidden>
+        <div class="composer-modal" style="max-width:400px">
+          <div class="composer-modal-head">
+            <h2 id="applyJobTitle">Quick Apply</h2>
+            <button class="composer-close" type="button" aria-label="Close">×</button>
+          </div>
+          <form id="quickApplyForm">
+            <div style="margin-bottom:10px">
+              <label for="applyName">Name</label>
+              <input id="applyName" name="name" type="text" required style="width:100%;padding:7px;border-radius:8px;border:1px solid #cbd5e1;margin-top:4px">
+            </div>
+            <div style="margin-bottom:10px">
+              <label for="applyEmail">Email</label>
+              <input id="applyEmail" name="email" type="email" required style="width:100%;padding:7px;border-radius:8px;border:1px solid #cbd5e1;margin-top:4px">
+            </div>
+            <div style="margin-bottom:10px">
+              <label for="applyResume">Resume</label>
+              <input id="applyResume" name="resume" type="file" accept=".pdf,.doc,.docx" required style="width:100%;margin-top:4px">
+            </div>
+            <button type="submit" class="profile-btn" style="width:100%;margin-top:8px">Submit Application</button>
+          </form>
+          <div id="applyConfirmation" hidden style="margin-top:16px;text-align:center;color:#22c55e;font-weight:600;font-size:16px">Application submitted!</div>
+        </div>
+      </div>
+      <script>
+        // Modal logic
+        const modal = document.getElementById('quickApplyModal');
+        const closeBtn = modal.querySelector('.composer-close');
+        const form = document.getElementById('quickApplyForm');
+        const confirmation = document.getElementById('applyConfirmation');
+        const jobTitle = document.getElementById('applyJobTitle');
+        let lastBtn = null;
+        document.querySelectorAll('.quick-apply-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            modal.hidden = false;
+            jobTitle.textContent = `Quick Apply — ${btn.dataset.role}`;
+            form.reset();
+            confirmation.hidden = true;
+            lastBtn = btn;
+          });
+        });
+        closeBtn.addEventListener('click', () => {
+          modal.hidden = true;
+        });
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          form.hidden = true;
+          confirmation.hidden = false;
+          setTimeout(() => {
+            modal.hidden = true;
+            form.hidden = false;
+          }, 1500);
+        });
+        // Close modal on outside click
+        modal.addEventListener('click', e => {
+          if (e.target === modal) modal.hidden = true;
+        });
+      </script>
+  </body>
+</html>

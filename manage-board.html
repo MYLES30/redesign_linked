@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Board — LinkedIn Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">in</div>
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" placeholder="Search jobs, companies, people" aria-label="Search" />
+        </div>
+        <nav class="topbar-nav" aria-label="Primary">
+          <a class="nav-item active" href="index.html">Home</a>
+          <a class="nav-item" href="v2-community.html">V2 Feed</a>
+          <a class="nav-item" href="demo.html">Demo</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="landing-wrap">
+      <section class="card landing-hero">
+        <h1>Manage Board</h1>
+        <p>View and organize your application stages, priorities, and next actions from one board-level workspace.</p>
+        <div class="landing-actions">
+          <a class="landing-btn primary" href="index.html">Back to V1 Home</a>
+          <a class="landing-btn" href="quick-apply.html">Go to Quick Apply</a>
+        </div>
+      </section>
+
+      <section class="landing-grid">
+        <article class="card">
+           <h2>Board Actions</h2>
+           <ul class="landing-list" id="boardActions"></ul>
+           <button id="editActionsBtn" class="landing-btn">Edit Actions</button>
+        </article>
+
+        <article class="card">
+           <h2>Today’s Summary</h2>
+           <ul class="landing-list" id="boardSummary"></ul>
+           <button id="editSummaryBtn" class="landing-btn">Edit Summary</button>
+        </article>
+      </section>
+      <script>
+        // Persistent board data using localStorage
+        const BOARD_STORAGE_KEY = "manageBoardData";
+        const defaultData = {
+          actions: [
+            "Reorder applications by urgency",
+            "Move roles between stages",
+            "Pin high-priority opportunities",
+            "Track deadline-sensitive follow-ups"
+          ],
+          summary: [
+            "3 roles need recruiter follow-up",
+            "2 interview preparations pending",
+            "1 offer discussion this week",
+            "Overall board health: On track"
+          ]
+        };
+
+        function loadBoardData() {
+          try {
+            const raw = localStorage.getItem(BOARD_STORAGE_KEY);
+            if (!raw) return {...defaultData};
+            const parsed = JSON.parse(raw);
+            return {
+              actions: Array.isArray(parsed.actions) ? parsed.actions : defaultData.actions,
+              summary: Array.isArray(parsed.summary) ? parsed.summary : defaultData.summary
+            };
+          } catch {
+            return {...defaultData};
+          }
+        }
+
+        function saveBoardData(data) {
+          localStorage.setItem(BOARD_STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function renderActions(actions) {
+          const actionsEl = document.getElementById("boardActions");
+          actionsEl.innerHTML = actions.map(item => `<li>${item}</li>`).join("");
+        }
+
+        function renderSummary(summary) {
+          const summaryEl = document.getElementById("boardSummary");
+          summaryEl.innerHTML = summary.map(item => `<li>${item}</li>`).join("");
+        }
+
+        function editList(type) {
+          const data = loadBoardData();
+          const items = data[type];
+          const container = type === "actions" ? document.getElementById("boardActions") : document.getElementById("boardSummary");
+          let html = "";
+          items.forEach((item, idx) => {
+            // Advanced fields: text, deadline, reminder, status
+            let text = typeof item === "object" ? item.text : item;
+            let deadline = typeof item === "object" ? item.deadline || "" : "";
+            let reminder = typeof item === "object" ? item.reminder || "" : "";
+            let status = typeof item === "object" ? item.status || "Pending" : "Pending";
+            html += `<li style='display:flex;align-items:center;gap:6px;'>
+              <input type='text' value='${text}' data-idx='${idx}' class='edit-text' style='width:32%'/>
+              <input type='date' value='${deadline}' data-idx='${idx}' class='edit-deadline' style='width:22%'/>
+              <input type='time' value='${reminder}' data-idx='${idx}' class='edit-reminder' style='width:18%'/>
+              <select data-idx='${idx}' class='edit-status' style='width:18%'>
+                <option${status==="Pending"?" selected":""}>Pending</option>
+                <option${status==="Done"?" selected":""}>Done</option>
+                <option${status==="Urgent"?" selected":""}>Urgent</option>
+              </select>
+              <button class='landing-btn' data-del='${idx}' style='padding:2px 8px;'>Delete</button>
+            </li>`;
+          });
+          html += `<li><button id='addItemBtn' class='landing-btn'>Add Item</button></li>`;
+          container.innerHTML = html;
+          document.getElementById("addItemBtn").onclick = function() {
+            items.push({text:"",deadline:"",reminder:"",status:"Pending"});
+            editList(type);
+          };
+          Array.from(container.querySelectorAll(".edit-text")).forEach(input => {
+            input.oninput = function() {
+              items[parseInt(input.dataset.idx)].text = input.value;
+            };
+          });
+          Array.from(container.querySelectorAll(".edit-deadline")).forEach(input => {
+            input.oninput = function() {
+              items[parseInt(input.dataset.idx)].deadline = input.value;
+            };
+          });
+          Array.from(container.querySelectorAll(".edit-reminder")).forEach(input => {
+            input.oninput = function() {
+              items[parseInt(input.dataset.idx)].reminder = input.value;
+            };
+          });
+          Array.from(container.querySelectorAll(".edit-status")).forEach(select => {
+            select.onchange = function() {
+              items[parseInt(select.dataset.idx)].status = select.value;
+            };
+          });
+          Array.from(container.querySelectorAll("[data-del]"))?.forEach(btn => {
+            btn.onclick = function() {
+              items.splice(parseInt(btn.dataset.del),1);
+              saveBoardData({...data, [type]: items});
+              editList(type);
+            };
+          });
+          // Save changes on blur
+          Array.from(container.querySelectorAll("input,select")).forEach(input => {
+            input.onblur = function() {
+              saveBoardData({...data, [type]: items.filter(i => i.text && i.text.trim().length > 0)});
+              renderBoard();
+            };
+          });
+        }
+
+        function renderBoard() {
+          const data = loadBoardData();
+          renderActions(data.actions);
+          renderSummary(data.summary);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+          renderBoard();
+          document.getElementById("editActionsBtn").onclick = function() { editList("actions"); };
+          document.getElementById("editSummaryBtn").onclick = function() { editList("summary"); };
+        });
+      </script>
+      <script>
+        // Mock production data
+        const boardData = {
+          actions: [
+            "Reorder applications by urgency",
+            "Move roles between stages",
+            "Pin high-priority opportunities",
+            "Track deadline-sensitive follow-ups"
+          ],
+          summary: [
+            "3 roles need recruiter follow-up",
+            "2 interview preparations pending",
+            "1 offer discussion this week",
+            "Overall board health: On track"
+          ]
+        };
+
+        function renderActions(actions) {
+          const actionsEl = document.getElementById("boardActions");
+          actionsEl.innerHTML = actions.map(item => {
+            let text = typeof item === "object" ? item.text : item;
+            let deadline = typeof item === "object" && item.deadline ? ` <span style='color:#b45309;font-size:12px;'>Deadline: ${item.deadline}</span>` : "";
+            let reminder = typeof item === "object" && item.reminder ? ` <span style='color:#2563eb;font-size:12px;'>Reminder: ${item.reminder}</span>` : "";
+            let status = typeof item === "object" && item.status ? ` <span style='color:#0a66c2;font-size:12px;'>Status: ${item.status}</span>` : "";
+            return `<li>${text}${deadline}${reminder}${status}</li>`;
+          }).join("");
+        }
+
+        function renderSummary(summary) {
+          const summaryEl = document.getElementById("boardSummary");
+          summaryEl.innerHTML = summary.map(item => {
+            let text = typeof item === "object" ? item.text : item;
+            let deadline = typeof item === "object" && item.deadline ? ` <span style='color:#b45309;font-size:12px;'>Deadline: ${item.deadline}</span>` : "";
+            let reminder = typeof item === "object" && item.reminder ? ` <span style='color:#2563eb;font-size:12px;'>Reminder: ${item.reminder}</span>` : "";
+            let status = typeof item === "object" && item.status ? ` <span style='color:#0a66c2;font-size:12px;'>Status: ${item.status}</span>` : "";
+            return `<li>${text}${deadline}${reminder}${status}</li>`;
+          }).join("");
+        }
+
+        // Simulate fetching data
+        document.addEventListener("DOMContentLoaded", function() {
+          renderActions(boardData.actions);
+          renderSummary(boardData.summary);
+        });
+      </script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Redesign — Desktop Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" crossorigin href="/assets/index-CXNoZmih.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">in</div>
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" placeholder="Search jobs, companies, people" aria-label="Search" />
+        </div>
+        <nav class="topbar-nav" aria-label="Primary">
+          <a class="nav-item active" href="#">Home</a>
+          <a class="nav-item" href="#">My Network</a>
+          <a class="nav-item" href="#">Jobs</a>
+          <a class="nav-item" href="#">Messaging</a>
+          <a class="nav-item" href="#">Notifications</a>
+          <a class="nav-item" href="v2-community.html">V2 Feed</a>
+          <a class="nav-item" href="demo.html">Demo</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="left-rail">
+        <section class="card profile-card">
+          <a class="profile-entry" href="profile.html">
+            <img class="profile-avatar" src="/assets/profile-photo-DliPh99B.jpg" alt="Mylene Zorilla" />
+            <div class="profile-info">
+              <h2>Mylene Zorilla</h2>
+              <p>Senior Product Designer<br />Actively exploring Product + UX roles</p>
+            </div>
+            <div class="kpi-grid">
+              <div><b>12</b><span>Saved jobs</span></div>
+              <div><b>5</b><span>Interviews</span></div>
+              <div><b>87%</b><span>Profile match</span></div>
+              <div><b>3</b><span>Follow-ups due</span></div>
+            </div>
+          </a>
+        </section>
+
+        <section class="card todo-card">
+          <h3><a class="content-link" href="#">Today’s Priority</a></h3>
+          <ul>
+            <li><a class="content-link" href="#">Reply to recruiter from NovaStack</a></li>
+            <li><a class="content-link" href="#">Customize resume for UX Engineer role</a></li>
+            <li><a class="content-link" href="#">Book interview prep session for Friday</a></li>
+          </ul>
+          <button>Open task planner</button>
+        </section>
+
+        <section class="card quick-links">
+          <h3>Quick Access</h3>
+          <a href="#">Saved jobs</a>
+          <a href="#">Application tracker</a>
+          <a href="#">Interview resources</a>
+        </section>
+      </aside>
+
+      <section class="center-feed">
+        <section class="card hero-card">
+          <div>
+            <h1>Your Job Search Command Center</h1>
+            <p class="hero-copy">Track applications, prepare interviews, and move faster from discovery to offer.</p>
+          </div>
+        </section>
+
+        <section class="card pipeline-card">
+          <div class="section-head">
+            <h2><a class="content-link" href="manage-board.html">Application Tracker</a></h2>
+            <a href="manage-board.html">Manage board</a>
+          </div>
+          <div class="pipeline-grid">
+            <article class="stage stage-applied">
+              <a class="stage-link" href="tracker-applied.html">
+                <h3>Applied</h3>
+                <p class="stage-count">4 roles</p>
+                <p class="stage-note">Next step: send one follow-up today.</p>
+              </a>
+            </article>
+            <article class="stage stage-screening">
+              <a class="stage-link" href="tracker-screening.html">
+                <h3>Screening</h3>
+                <p class="stage-count">3 roles</p>
+                <p class="stage-note">One recruiter call tomorrow at 10:00 AM.</p>
+              </a>
+            </article>
+            <article class="stage stage-interview">
+              <a class="stage-link" href="tracker-interview.html">
+                <h3>Interview</h3>
+                <p class="stage-count">2 roles</p>
+                <p class="stage-note">Prep score increased by 14% this week.</p>
+              </a>
+            </article>
+            <article class="stage stage-offer">
+              <a class="stage-link" href="tracker-offer.html">
+                <h3>Final / Offer</h3>
+                <p class="stage-count">1 role</p>
+                <p class="stage-note">Compensation review expected this Friday.</p>
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section class="card action-grid-card">
+          <h2><a class="content-link" href="#">Recommended Next Steps</a></h2>
+          <div class="action-grid">
+            <article>
+              <h3><a class="content-link" href="#">Finish 2 pending applications</a></h3>
+              <p>Both roles are a strong skill match and close in 48 hours.</p>
+              <a href="#">Review drafts</a>
+            </article>
+            <article>
+              <h3><a class="content-link" href="#">Prepare for technical interview</a></h3>
+              <p>System design + accessibility topics are most likely for your panel.</p>
+              <a href="#">Open prep checklist</a>
+            </article>
+            <article>
+              <h3><a class="content-link" href="#">Follow up with recruiter messages</a></h3>
+              <p>Three unread messages have high response urgency today.</p>
+              <a href="#">Open priority inbox</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="card community-feed">
+          <div class="section-head">
+            <h2><a class="content-link" href="#">Community Feed</a></h2>
+            <a href="#">Open full feed</a>
+          </div>
+
+          <section class="community-composer">
+            <div class="community-composer-top">
+              <img src="/assets/profile-photo-DliPh99B.jpg" alt="Mylene Zorilla" />
+              <button type="button" id="openComposerV1">Share a professional update</button>
+            </div>
+            <div class="community-composer-actions">
+              <button type="button" class="composer-chip-v1" data-compose-type="Media">Media</button>
+              <button type="button" class="composer-chip-v1" data-compose-type="Article">Article</button>
+              <button type="button" class="composer-chip-v1" data-compose-type="Poll">Poll</button>
+            </div>
+            <div class="profile-actions">
+              <button type="button" class="profile-btn" id="toggleSavedPostsV1" hidden>Show my previous posts</button>
+            </div>
+          </section>
+
+          <div id="communityFeedV1"></div>
+
+          <div class="community-toolbar">
+            <span>Sort by: <b>Top</b></span>
+            <a href="#">Recent posts</a>
+          </div>
+
+          <article class="community-post-card">
+            <header class="community-post-head">
+              <div class="community-author">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena Rodriguez" />
+                <div>
+                  <h3><a class="content-link" href="#">Elena Rodriguez · 2nd</a></h3>
+                  <p><a class="content-link" href="#">Frontend Architect · 5h · <span>🌐</span></a></p>
+                </div>
+              </div>
+              <div class="community-post-tools"><a href="#">+ Follow</a><button type="button" class="post-menu-btn" aria-label="More" aria-expanded="false">•••</button></div>
+            </header>
+
+            <p class="community-post-copy"><a class="content-link" href="#">Shared practical notes on preparing for frontend system-design interviews with React examples. Added a short checklist for discussing trade-offs, performance bottlenecks, and accessibility decisions during panel rounds.</a></p>
+
+            <img class="community-post-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80" alt="Team reviewing product screens" />
+
+            <div class="community-post-meta">
+              <span>👍 214</span>
+              <span>48 comments</span>
+              <span>12 reposts</span>
+            </div>
+
+            <footer class="community-post-actions">
+              <button>Like</button>
+              <button>Comment</button>
+              <button>Repost</button>
+              <button>Send</button>
+            </footer>
+          </article>
+
+          <article class="community-post-card">
+            <header class="community-post-head">
+              <div class="community-author">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" />
+                <div>
+                  <h3><a class="content-link" href="#">Michael Chen · 2nd</a></h3>
+                  <p><a class="content-link" href="#">VP Engineering · 1d · <span>🌐</span></a></p>
+                </div>
+              </div>
+              <div class="community-post-tools"><a href="#">+ Follow</a><button type="button" class="post-menu-btn" aria-label="More" aria-expanded="false">•••</button></div>
+            </header>
+
+            <p class="community-post-copy"><a class="content-link" href="#">Hiring update: product and platform roles are open across Toronto and remote teams this month. We’re prioritizing candidates with strong systems thinking and cross-functional delivery experience.</a></p>
+
+            <div class="community-post-meta">
+              <span>👍 179</span>
+              <span>31 comments</span>
+              <span>9 reposts</span>
+            </div>
+
+            <footer class="community-post-actions">
+              <button>Like</button>
+              <button>Comment</button>
+              <button>Repost</button>
+              <button>Send</button>
+            </footer>
+          </article>
+        </section>
+      </section>
+
+      <aside class="right-rail">
+        <section class="card calendar-card">
+          <h2><a class="content-link" href="#">This Week</a></h2>
+          <ul>
+            <li><a class="content-link" href="#"><b>Thu 10:00</b> — NovaStack recruiter screening</a></li>
+            <li><a class="content-link" href="#"><b>Fri 14:00</b> — TechCloud panel interview</a></li>
+            <li><a class="content-link" href="#"><b>Sat 09:30</b> — ByteForge live case</a></li>
+          </ul>
+        </section>
+
+        <section class="card feedback-card">
+          <h2><a class="content-link" href="#">Priority Inbox</a></h2>
+          <p><a class="content-link" href="#"><b>3 unread recruiter messages</b> require response today.</a></p>
+          <p><a class="content-link" href="#"><b>2 follow-ups due</b> for active interview stages.</a></p>
+        </section>
+
+        <section class="card recommendations">
+          <div class="section-head">
+            <h2><a class="content-link" href="#">Roles Matched to Your Profile</a></h2>
+            <a href="#">See all</a>
+          </div>
+          <article class="role-item">
+            <div>
+              <h3><a class="content-link" href="#">Senior Product Designer</a></h3>
+              <p><a class="content-link" href="#">LaunchGrid · Toronto, ON · Hybrid</a></p>
+              <small><a class="content-link" href="#">Match: strong design system + collaboration fit</a></small>
+            </div>
+            <a class="quick-apply-link" href="quick-apply.html">Quick Apply</a>
+          </article>
+          <article class="role-item">
+            <div>
+              <h3><a class="content-link" href="#">UX Engineer (React)</a></h3>
+              <p><a class="content-link" href="#">Vertex Labs · Remote · Full-time</a></p>
+              <small><a class="content-link" href="#">Match: frontend + interaction design experience</a></small>
+            </div>
+            <a class="quick-apply-link" href="quick-apply.html">Quick Apply</a>
+          </article>
+          <article class="role-item">
+            <div>
+              <h3><a class="content-link" href="#">Design Systems Architect</a></h3>
+              <p><a class="content-link" href="#">CoreSignal · Vancouver, BC · On-site</a></p>
+              <small><a class="content-link" href="#">Match: component governance + scalability track record</a></small>
+            </div>
+            <a class="quick-apply-link" href="quick-apply.html">Quick Apply</a>
+          </article>
+        </section>
+
+        <footer class="footer-links">
+          <a href="#">About</a><a href="#">Accessibility</a><a href="#">Help Center</a><a href="#">Privacy & Terms</a>
+          <p>LinkedIn Prototype © 2026</p>
+        </footer>
+      </aside>
+    </main>
+
+    <div class="composer-overlay" id="composerOverlayV1" hidden>
+      <section class="composer-modal" role="dialog" aria-modal="true" aria-labelledby="composerTitleV1">
+        <div class="composer-modal-head">
+          <h2 id="composerTitleV1">Create post</h2>
+          <button type="button" class="composer-close" id="composerCloseV1" aria-label="Close">✕</button>
+        </div>
+        <textarea id="composerInputV1" placeholder="What do you want to talk about?"></textarea>
+        <div class="composer-extra" id="composerExtraV1"></div>
+        <p class="composer-count" id="composerCountV1">0/1000</p>
+        <div class="composer-modal-actions">
+          <button type="button" class="profile-btn" id="composerCancelV1">Cancel</button>
+          <button type="button" class="profile-btn primary" id="composerPostV1" disabled>Post</button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        const overlay = document.getElementById("composerOverlayV1");
+        const openComposerBtn = document.getElementById("openComposerV1");
+        const closeBtn = document.getElementById("composerCloseV1");
+        const cancelBtn = document.getElementById("composerCancelV1");
+        const postBtn = document.getElementById("composerPostV1");
+        const titleEl = document.getElementById("composerTitleV1");
+        const inputEl = document.getElementById("composerInputV1");
+        const extraEl = document.getElementById("composerExtraV1");
+        const countEl = document.getElementById("composerCountV1");
+        const chips = document.querySelectorAll(".composer-chip-v1");
+        const feedRoot = document.getElementById("communityFeedV1");
+        const toggleSavedPostsBtn = document.getElementById("toggleSavedPostsV1");
+        let currentMode = "Post";
+        let savedPostsVisible = false;
+        let activePostMenu = null;
+        let editingPostId = null;
+        let editingPostElement = null;
+
+        if (!overlay || !openComposerBtn || !closeBtn || !cancelBtn || !postBtn || !titleEl || !inputEl || !extraEl || !countEl || !feedRoot || !toggleSavedPostsBtn) return;
+
+        const maxChars = 1000;
+        const postStorageKey = "v1CommunityPosts";
+
+        function loadPosts() {
+          try {
+            const raw = localStorage.getItem(postStorageKey);
+            if (!raw) return [];
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed : [];
+          } catch {
+            return [];
+          }
+        }
+
+        function savePosts(posts) {
+          try {
+            localStorage.setItem(postStorageKey, JSON.stringify(posts));
+          } catch {
+            // Ignore storage write issues
+          }
+        }
+
+        function getTimeLabel(isoDate) {
+          const created = new Date(isoDate);
+          const now = new Date();
+          const diffMs = now.getTime() - created.getTime();
+          const diffMins = Math.floor(diffMs / 60000);
+
+          if (diffMins < 1) return "Now";
+          if (diffMins < 60) return `${diffMins}m`;
+
+          const diffHours = Math.floor(diffMins / 60);
+          if (diffHours < 24) return `${diffHours}h`;
+
+          const diffDays = Math.floor(diffHours / 24);
+          return `${diffDays}d`;
+        }
+
+        const savedPosts = loadPosts();
+        let postsChanged = false;
+        savedPosts.forEach((postData) => {
+          if (!postData.id) {
+            postData.id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            postsChanged = true;
+          }
+        });
+        if (postsChanged) savePosts(savedPosts);
+
+        if (savedPosts.length > 0) toggleSavedPostsBtn.hidden = false;
+
+        function updateComposerState() {
+          if (inputEl.value.length > maxChars) {
+            inputEl.value = inputEl.value.slice(0, maxChars);
+          }
+          const count = inputEl.value.length;
+          countEl.textContent = `${count}/${maxChars}`;
+          postBtn.disabled = count === 0;
+        }
+
+        function setMode(mode) {
+          currentMode = mode;
+
+          if (mode === "Media") {
+            titleEl.textContent = "Create media post";
+            inputEl.placeholder = "Add context for your media...";
+            extraEl.innerHTML = "<p>Attach images or videos to your post.</p>";
+            return;
+          }
+
+          if (mode === "Article") {
+            titleEl.textContent = "Create article";
+            inputEl.placeholder = "Write a headline and intro for your article...";
+            extraEl.innerHTML = "<p>Draft long-form content for your network.</p>";
+            return;
+          }
+
+          if (mode === "Poll") {
+            titleEl.textContent = "Create poll";
+            inputEl.placeholder = "Ask your audience a clear question...";
+            extraEl.innerHTML = "<p>Add poll options and choose duration.</p>";
+            return;
+          }
+
+          titleEl.textContent = "Create post";
+          inputEl.placeholder = "What do you want to talk about?";
+          extraEl.innerHTML = "";
+        }
+
+        function openModal(mode) {
+          setMode(mode);
+          overlay.hidden = false;
+          updateComposerState();
+          inputEl.focus();
+        }
+
+        function openEditModal(postData, postElement) {
+          if (!postData || !postData.id) return;
+
+          editingPostId = postData.id;
+          editingPostElement = postElement || null;
+          postBtn.textContent = "Save";
+
+          openModal(postData.mode || "Post");
+          inputEl.value = postData.text || "";
+          updateComposerState();
+        }
+
+        function closeModal(event) {
+          if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          inputEl.value = "";
+          editingPostId = null;
+          editingPostElement = null;
+          postBtn.textContent = "Post";
+          currentMode = "Post";
+          setMode("Post");
+          updateComposerState();
+          overlay.hidden = true;
+        }
+
+        function closeAllPostMenus() {
+          document.querySelectorAll(".post-menu").forEach((menu) => {
+            menu.hidden = true;
+          });
+          document.querySelectorAll(".post-menu-btn").forEach((btn) => {
+            btn.setAttribute("aria-expanded", "false");
+          });
+          activePostMenu = null;
+        }
+
+        function copyPostText(post) {
+          const authorName = post.querySelector(".community-author h3")?.textContent?.trim() || "LinkedIn Post";
+          const bodyText = post.querySelector(".community-post-copy")?.textContent?.trim() || "";
+          const textToCopy = `${authorName}: ${bodyText}`;
+
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            navigator.clipboard.writeText(textToCopy).catch(() => {});
+          }
+        }
+
+        function attachPostMenu(post, postData, isOwnPost) {
+          const head = post.querySelector(".community-post-head");
+          if (!head) return;
+
+          const toolsWrap = head.querySelector(".community-post-tools");
+          if (!toolsWrap) return;
+
+          const menuBtn = toolsWrap.querySelector(".post-menu-btn") || toolsWrap.querySelector('button[aria-label="More"]');
+          if (!menuBtn || toolsWrap.querySelector(".post-menu")) return;
+
+          menuBtn.classList.add("post-menu-btn");
+          menuBtn.setAttribute("type", "button");
+          menuBtn.setAttribute("aria-expanded", "false");
+
+          const menu = document.createElement("div");
+          menu.className = "post-menu";
+          menu.setAttribute("role", "menu");
+          menu.hidden = true;
+
+          const actions = isOwnPost
+            ? [
+                { label: "Edit post", action: "edit" },
+                { label: "Copy post text", action: "copy" },
+                { label: "Delete post", action: "delete" }
+              ]
+            : [
+                { label: "Save post", action: "save" },
+                { label: "Not interested", action: "hide" },
+                { label: "Copy post text", action: "copy" }
+              ];
+
+          actions.forEach((item) => {
+            const actionBtn = document.createElement("button");
+            actionBtn.type = "button";
+            actionBtn.className = "post-menu-item";
+            actionBtn.setAttribute("role", "menuitem");
+            actionBtn.textContent = item.label;
+
+            actionBtn.addEventListener("click", () => {
+              if (item.action === "copy") {
+                copyPostText(post);
+              }
+
+              if (item.action === "hide") {
+                post.remove();
+              }
+
+              if (item.action === "edit" && postData?.id) {
+                openEditModal(postData, post);
+              }
+
+              if (item.action === "delete" && postData?.id) {
+                const index = savedPosts.findIndex((entry) => entry.id === postData.id);
+                if (index >= 0) {
+                  savedPosts.splice(index, 1);
+                  savePosts(savedPosts);
+                }
+                post.remove();
+              }
+
+              closeAllPostMenus();
+            });
+
+            menu.appendChild(actionBtn);
+          });
+
+          menuBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const isOpening = menu.hidden;
+            closeAllPostMenus();
+            if (isOpening) {
+              menu.hidden = false;
+              menuBtn.setAttribute("aria-expanded", "true");
+              activePostMenu = menu;
+            }
+          });
+
+          menu.addEventListener("click", (event) => {
+            event.stopPropagation();
+          });
+
+          toolsWrap.appendChild(menu);
+        }
+
+        function renderPost(postData, prepend = false, replaceTarget = null) {
+          const post = document.createElement("article");
+          post.className = "community-post-card";
+          post.dataset.postId = postData.id || "";
+
+          const head = document.createElement("header");
+          head.className = "community-post-head";
+
+          const author = document.createElement("div");
+          author.className = "community-author";
+          author.innerHTML = `
+            <img src="assets/profile-photo.jpg" alt="Mylene Zorilla" />
+            <div>
+              <h3>Mylene Zorilla · You</h3>
+              <p>Senior Product Designer · ${getTimeLabel(postData.createdAt)} · <span>🌐</span></p>
+            </div>
+          `;
+
+          const toolsWrap = document.createElement("div");
+          toolsWrap.className = "community-post-tools";
+          toolsWrap.innerHTML = '<button type="button" class="post-menu-btn" aria-label="More" aria-expanded="false">•••</button>';
+
+          head.appendChild(author);
+          head.appendChild(toolsWrap);
+
+          const body = document.createElement("p");
+          body.className = "community-post-copy";
+          const prefix = postData.mode && postData.mode !== "Post" ? `${postData.mode}: ` : "";
+          body.textContent = `${prefix}${postData.text}`;
+
+          const meta = document.createElement("div");
+          meta.className = "community-post-meta";
+          meta.innerHTML = "<span>👍 0</span><span>0 comments</span><span>0 reposts</span>";
+
+          const actions = document.createElement("footer");
+          actions.className = "community-post-actions";
+          actions.innerHTML = "<button>Like</button><button>Comment</button><button>Repost</button><button>Send</button>";
+
+          post.appendChild(head);
+          post.appendChild(body);
+          post.appendChild(meta);
+          post.appendChild(actions);
+
+          if (replaceTarget && replaceTarget.parentNode) {
+            replaceTarget.replaceWith(post);
+          } else if (prepend) {
+            feedRoot.prepend(post);
+          } else {
+            feedRoot.appendChild(post);
+          }
+
+          attachPostMenu(post, postData, true);
+        }
+
+        openComposerBtn.addEventListener("click", () => openModal("Post"));
+        closeBtn.addEventListener("click", (event) => closeModal(event));
+        cancelBtn.addEventListener("click", (event) => closeModal(event));
+        overlay.addEventListener("click", (event) => {
+          if (event.target === overlay) closeModal(event);
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          if (!overlay.hidden) {
+            closeModal(event);
+            return;
+          }
+          closeAllPostMenus();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (event.target.closest(".post-menu") || event.target.closest(".post-menu-btn")) return;
+          if (activePostMenu) {
+            closeAllPostMenus();
+          }
+        });
+
+        chips.forEach((chip) => {
+          chip.addEventListener("click", () => {
+            const mode = chip.getAttribute("data-compose-type") || "Post";
+            openModal(mode);
+          });
+        });
+
+        toggleSavedPostsBtn.addEventListener("click", () => {
+          if (savedPostsVisible) return;
+          savedPosts.forEach((postData) => {
+            if (!postData || typeof postData.text !== "string" || !postData.text.trim()) return;
+            renderPost(postData);
+          });
+          savedPostsVisible = true;
+          toggleSavedPostsBtn.hidden = true;
+        });
+
+        inputEl.addEventListener("input", updateComposerState);
+
+        postBtn.addEventListener("click", () => {
+          const text = inputEl.value.trim();
+          if (!text) return;
+
+          if (editingPostId) {
+            const index = savedPosts.findIndex((entry) => entry.id === editingPostId);
+            if (index >= 0) {
+              const existing = savedPosts[index];
+              const updatedPost = {
+                ...existing,
+                text,
+                mode: currentMode
+              };
+              savedPosts[index] = updatedPost;
+              savePosts(savedPosts);
+              renderPost(updatedPost, false, editingPostElement);
+            }
+
+            closeModal();
+            return;
+          }
+
+          const postData = {
+            id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+            text,
+            mode: currentMode,
+            createdAt: new Date().toISOString()
+          };
+
+          savedPosts.unshift(postData);
+          savePosts(savedPosts);
+          renderPost(postData, true);
+          closeModal();
+        });
+
+        updateComposerState();
+
+        document.querySelectorAll(".community-post-card").forEach((post) => {
+          attachPostMenu(post, null, false);
+        });
+      })();
+    </script>
+  </body>
+</html>

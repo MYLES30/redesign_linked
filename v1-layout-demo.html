@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Redesign - V1 Layout Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .layout-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .layout-box {
+      position: relative;
+      width: 900px;
+      min-height: 600px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      margin-bottom: 40px;
+    }
+    .webpart {
+      position: relative;
+      border: 3px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      padding: 18px 16px;
+      background: #f8fafc;
+    }
+    .webpart-label {
+      position: absolute;
+      left: -3px;
+      top: -32px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #2563eb;
+      background: #e0e7ff;
+      border-radius: 8px;
+      padding: 4px 12px;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+      z-index: 2;
+    }
+    .webpart-title { border-color: #a21caf; }
+    .webpart-title .webpart-label { color: #a21caf; background: #f3e8ff; }
+    .webpart-graph { border-color: #059669; }
+    .webpart-graph .webpart-label { color: #059669; background: #d1fae5; }
+    .webpart-search { border-color: #2563eb; }
+    .webpart-search .webpart-label { color: #2563eb; background: #e0e7ff; }
+    .webpart-button { border-color: #f59e0b; }
+    .webpart-button .webpart-label { color: #f59e0b; background: #fef3c7; }
+    .label {
+      font-size: 15px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout-demo">
+    <h1>V1 Feed-Like Layout Demo</h1>
+    <div class="layout-box">
+      <div class="webpart webpart-title">
+        <div class="webpart-label">Webpart Title</div>
+        <strong>Feed Title: LinkedIn V1 Feed</strong>
+      </div>
+      <div class="webpart webpart-graph">
+        <div class="webpart-label">Webpart Graph</div>
+        <div>Graph/Stats/Highlights (e.g., trending posts, activity)</div>
+      </div>
+      <div class="webpart webpart-search">
+        <div class="webpart-label">Webpart Search</div>
+        <div>Search bar, filter options, or search results</div>
+      </div>
+      <div class="webpart webpart-search">
+        <div class="webpart-label">Webpart Search</div>
+        <div>Feed Section: Posts, updates, activity</div>
+      </div>
+      <div class="webpart webpart-search">
+        <div class="webpart-label">Webpart Search</div>
+        <div>Profile Section: User profile summary, quick actions</div>
+      </div>
+      <div class="webpart webpart-button">
+        <div class="webpart-label">Webpart Button</div>
+        <div>Menu Section: Navigation links (Home, My Network, Jobs, etc.)</div>
+      </div>
+    </div>
+    <p class="label">Each section is visually boxed and labeled for demo purposes, following the style in your example.</p>
+  </div>
+</body>
+</html>

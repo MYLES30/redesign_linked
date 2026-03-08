@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full V1 Community Feed — LinkedIn Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">in</div>
+      <nav class="topbar-nav">
+        <a class="nav-item" href="index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="landing-wrap">
+    <section class="card">
+      <a class="landing-btn" href="index.html" style="margin-bottom:16px;display:inline-block;">Back to V1 Main Page</a>
+      <div class="community-feed">
+        <article class="community-post-card">
+          <header class="community-post-head">
+            <div class="community-author">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena Rodriguez" />
+              <div>
+                <h3><a class="content-link" href="#">Elena Rodriguez · 2nd</a></h3>
+                <p><a class="content-link" href="#">Frontend Architect · 5h · <span>🌐</span></a></p>
+              </div>
+            </div>
+            <div class="community-post-tools"><a href="#">+ Follow</a><button type="button" class="post-menu-btn" aria-label="More" aria-expanded="false">•••</button></div>
+          </header>
+          <p class="community-post-copy"><a class="content-link" href="#">Shared practical notes on preparing for frontend system-design interviews with React examples. Added a short checklist for discussing trade-offs, performance bottlenecks, and accessibility decisions during panel rounds.</a></p>
+          <img class="community-post-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80" alt="Team reviewing product screens" />
+          <div class="community-post-meta">
+            <span id="elena-likes">👍 214</span>
+            <span id="elena-comments">48 comments</span>
+            <span id="elena-reposts">12 reposts</span>
+          </div>
+          <footer class="community-post-actions">
+            <div class="community-actions">
+              <button class="like-btn" id="elena-like">Like</button>
+              <button class="comment-btn" id="elena-comment">Comment</button>
+              <button class="share-btn" id="elena-share">Share</button>
+            </div>
+          </footer>
+        </article>
+        <article class="community-post-card">
+          <header class="community-post-head">
+            <div class="community-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" />
+              <div>
+                <h3><a class="content-link" href="#">Michael Chen · 2nd</a></h3>
+                <p><a class="content-link" href="#">VP Engineering · 1d · <span>🌐</span></a></p>
+              </div>
+            </div>
+            <div class="community-post-tools"><a href="#">+ Follow</a><button type="button" class="post-menu-btn" aria-label="More" aria-expanded="false">•••</button></div>
+          </header>
+          <p class="community-post-copy"><a class="content-link" href="#">Hiring update: product and platform roles are open across Toronto and remote teams this month. We’re prioritizing candidates with strong systems thinking and cross-functional delivery experience.</a></p>
+          <div class="community-post-meta">
+            <span id="michael-likes">👍 179</span>
+            <span id="michael-comments">31 comments</span>
+            <span id="michael-reposts">9 reposts</span>
+          </div>
+          <footer class="community-post-actions">
+            <div class="community-actions">
+              <button class="like-btn" id="michael-like">Like</button>
+              <button class="comment-btn" id="michael-comment">Comment</button>
+              <button class="share-btn" id="michael-share">Share</button>
+            </div>
+          </footer>
+        </article>
+        <!-- Add more posts as needed -->
+      </div>
+    </section>
+    <script>
+    // Like, Comment, Share for Elena Rodriguez post
+    let elenaLikes = 214;
+    let elenaComments = 48;
+    let elenaReposts = 12;
+    const elenaLikeBtn = document.getElementById("elena-like");
+    const elenaCommentBtn = document.getElementById("elena-comment");
+    const elenaShareBtn = document.getElementById("elena-share");
+    const elenaLikesSpan = document.getElementById("elena-likes");
+    const elenaCommentsSpan = document.getElementById("elena-comments");
+    const elenaRepostsSpan = document.getElementById("elena-reposts");
+    if (elenaLikeBtn) {
+      elenaLikeBtn.addEventListener("click", function () {
+        elenaLikes++;
+        elenaLikesSpan.textContent = `👍 ${elenaLikes}`;
+        elenaLikeBtn.disabled = true;
+        elenaLikeBtn.textContent = "Liked";
+      });
+    }
+    if (elenaCommentBtn) {
+      elenaCommentBtn.addEventListener("click", function () {
+        const comment = prompt("Add your comment:");
+        if (comment && comment.trim().length > 0) {
+          elenaComments++;
+          elenaCommentsSpan.textContent = `${elenaComments} comments`;
+          alert("Comment added!");
+        }
+      });
+    }
+    if (elenaShareBtn) {
+      elenaShareBtn.addEventListener("click", function () {
+        elenaReposts++;
+        elenaRepostsSpan.textContent = `${elenaReposts} reposts`;
+        alert("Post shared to your feed!");
+      });
+    }
+
+    // Like, Comment, Share for Michael Chen post
+    let michaelLikes = 179;
+    let michaelComments = 31;
+    let michaelReposts = 9;
+    const michaelLikeBtn = document.getElementById("michael-like");
+    const michaelCommentBtn = document.getElementById("michael-comment");
+    const michaelShareBtn = document.getElementById("michael-share");
+    const michaelLikesSpan = document.getElementById("michael-likes");
+    const michaelCommentsSpan = document.getElementById("michael-comments");
+    const michaelRepostsSpan = document.getElementById("michael-reposts");
+    if (michaelLikeBtn) {
+      michaelLikeBtn.addEventListener("click", function () {
+        michaelLikes++;
+        michaelLikesSpan.textContent = `👍 ${michaelLikes}`;
+        michaelLikeBtn.disabled = true;
+        michaelLikeBtn.textContent = "Liked";
+      });
+    }
+    if (michaelCommentBtn) {
+      michaelCommentBtn.addEventListener("click", function () {
+        const comment = prompt("Add your comment:");
+        if (comment && comment.trim().length > 0) {
+          michaelComments++;
+          michaelCommentsSpan.textContent = `${michaelComments} comments`;
+          alert("Comment added!");
+        }
+      });
+    }
+    if (michaelShareBtn) {
+      michaelShareBtn.addEventListener("click", function () {
+        michaelReposts++;
+        michaelRepostsSpan.textContent = `${michaelReposts} reposts`;
+        alert("Post shared to your feed!");
+      });
+    }
+    </script>
+  </main>
+</body>
+</html>
